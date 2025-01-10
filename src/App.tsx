@@ -3,10 +3,23 @@ import "./App.css";
 import Generator from "./components/Generator";
 import Hero from "./components/Hero";
 import Workout from "./components/Workout";
-import { generateWorkout } from "./utils/functions";
+import { generateWorkout } from "./utils/helpers";
+
+type Workout = {
+  description: string;
+  meta: { environment: string; equipment: string[]; level: number[] };
+  muscles: string[];
+  name: string;
+  reps: number;
+  rest: number;
+  substitutes: string[];
+  tempo: string;
+  type: string;
+  unit: string;
+};
 
 function App() {
-  const [workout, setWorkout] = useState<string>("");
+  const [workout, setWorkout] = useState<Workout>(null);
   const [formula, setFormula] = useState<string>("bro_split");
   const [muscles, setMuscles] = useState<string[]>([]);
   const [goal, setGoal] = useState("strength_power");
@@ -19,6 +32,7 @@ function App() {
       return;
     }
     const newWorkout = generateWorkout({ formula, muscles, goal });
+    console.log("newWorkout", newWorkout);
     setWorkout(newWorkout);
   }
 
@@ -34,7 +48,7 @@ function App() {
         setGoal={setGoal}
         updateWorkout={updateWorkout}
       />
-      {workout.length && <Workout workout={workout} />}
+      {workout && <Workout workout={workout} />}
     </main>
   );
 }
