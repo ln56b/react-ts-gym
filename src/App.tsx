@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Generator from "./components/Generator";
+import Hero from "./components/Hero";
+import Workout from "./components/Workout";
+import { generateWorkout } from "./utils/functions";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [workout, setWorkout] = useState<string>("");
+  const [formula, setFormula] = useState<string>("bro_split");
+  const [muscles, setMuscles] = useState<string[]>([]);
+  const [goal, setGoal] = useState("strength_power");
+
+  function updateWorkout() {
+    console.log("formula", formula);
+    console.log("muscles", muscles);
+    console.log("goal", goal);
+    if (!formula || !muscles.length || !goal) {
+      return;
+    }
+    const newWorkout = generateWorkout({ formula, muscles, goal });
+    setWorkout(newWorkout);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="flex flex-col min-h-screen text-sm text-white bg-gradient-to-r from-slate-800 to-slate-950 sm:text-base">
+      <Hero />
+      <Generator
+        formula={formula}
+        setFormula={setFormula}
+        muscles={muscles}
+        setMuscles={setMuscles}
+        goal={goal}
+        setGoal={setGoal}
+        updateWorkout={updateWorkout}
+      />
+      {workout.length && <Workout workout={workout} />}
+    </main>
+  );
 }
 
-export default App
+export default App;
