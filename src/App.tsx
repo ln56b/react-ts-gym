@@ -4,19 +4,7 @@ import Generator from "./components/Generator";
 import Hero from "./components/Hero";
 import { generateWorkout } from "./utils/helpers";
 import Workout from "./components/Workout";
-
-type Exercise = {
-  description: string;
-  meta: { environment: string; equipment: string[]; level: number[] };
-  muscles: string[];
-  name: string;
-  reps: number;
-  rest: number;
-  substitutes: string[];
-  tempo: string;
-  type: string;
-  unit: string;
-};
+import { Exercise } from "./interfaces/models";
 
 function App() {
   const [workout, setWorkout] = useState<Exercise[]>([]);

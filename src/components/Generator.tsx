@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SCHEMES, WORKOUTS } from "../utils/workouts";
 import SectionWrapper from "./SectionWrapper";
 import Button from "./Button";
+import { Formula } from "../interfaces/models";
 
 type HeaderProps = {
   index: string;
@@ -18,8 +19,6 @@ type GeneratorProps = {
   setGoal: React.Dispatch<React.SetStateAction<string>>;
   updateWorkout: () => void;
 };
-
-type Formula = "bro_split" | "bodybuilder_split" | "upper_lower";
 
 function Header({ index, title, description }: HeaderProps) {
   return (
@@ -159,7 +158,7 @@ export default function Generator(props: GeneratorProps) {
         title="SCHEMES"
         description="Sunt in culpa qui officia deserunt mollit anim id est laborum"
       />
-      <div className="grid grid-cols-1 grid-cols-3 gap-4 ">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
         {Object.keys(SCHEMES).map((scheme, i) => {
           return (
             <button
