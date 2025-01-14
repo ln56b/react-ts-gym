@@ -29,6 +29,16 @@ export default function ExerciseCard({ exercise, index }: ExerciseCardProps) {
         <p className="capitalize">{exercise.muscles.join(", ")}</p>
       </div>
 
+      <div className="flex flex-col gap-2 rounded bg-slate-950">
+        {exercise.description.split("___").map((description, index) => {
+          return (
+            <p key={index} className="p-2 text-sm text-slate-400">
+              {description}
+            </p>
+          );
+        })}
+      </div>
+
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:place-items-center">
         {["reps", "rest", "tempo"].map((info) => {
           return (
