@@ -1,3 +1,4 @@
+import { Exercise } from "../interfaces/models";
 import { EXERCISES, SCHEMES, TEMPOS, WORKOUTS } from "./workouts";
 const exercises = exercisesFlattener(EXERCISES);
 
@@ -26,7 +27,7 @@ export function generateWorkout(args) {
       //make this compound and exercise muscle -> array of objects and destructure in loop
       return [
         ...acc,
-        ...[...Array(parseInt(curr)).keys()].map((val) =>
+        ...[...Array(parseInt(curr)).keys()].map(() =>
           index === 0 ? "compound" : "accessory"
         ),
       ];
@@ -139,7 +140,7 @@ function shuffleArray(array) {
   return array;
 }
 
-function exercisesFlattener(exercisesObj) {
+function exercisesFlattener(exercisesObj: { [key: string]: Exercise }) {
   const flattenedObj = {};
 
   for (const [key, val] of Object.entries(exercisesObj)) {

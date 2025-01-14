@@ -1,12 +1,15 @@
 export type Exercise = {
   description: string;
   meta: { environment: string; equipment: string[]; level: number[] };
+  variants?: {
+    [key: string]: string;
+  };
   muscles: string[];
-  name: string;
-  reps: number;
-  rest: number;
+  name?: string;
+  reps?: number;
+  rest?: number;
   substitutes: string[];
-  tempo: string;
+  tempo?: string;
   type: string;
   unit: string;
 };
