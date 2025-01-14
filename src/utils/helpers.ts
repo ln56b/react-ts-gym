@@ -88,8 +88,6 @@ export function generateWorkout(args) {
       filteredDataList[Math.floor(Math.random() * filteredDataList.length)] ||
       filteredOppList[Math.floor(Math.random() * filteredOppList.length)];
 
-    // console.log(randomExercise)
-
     if (!randomExercise) {
       return {};
     }

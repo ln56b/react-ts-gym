@@ -29,7 +29,6 @@ function App() {
       return;
     }
     const newWorkout = generateWorkout({ formula, muscles, goal });
-    console.log("newWorkout", newWorkout);
     setWorkout(newWorkout);
   }
 

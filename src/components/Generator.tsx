@@ -36,15 +36,8 @@ function Header({ index, title, description }: HeaderProps) {
 }
 
 export default function Generator(props: GeneratorProps) {
-  const {
-    muscles,
-    setMuscles,
-    formula,
-    setFormula,
-    goal,
-    setGoal,
-    updateWorkout,
-  } = props;
+  const { muscles, setMuscles, formula, setFormula, setGoal, updateWorkout } =
+    props;
   const [displaySectionTwo, setDisplaySectionTwo] = useState(true);
 
   function toggleSectionTwo(): void {
@@ -78,6 +71,7 @@ export default function Generator(props: GeneratorProps) {
 
   return (
     <SectionWrapper
+      id="generator"
       header="Why do we use it?"
       title="Content here, content here"
     >

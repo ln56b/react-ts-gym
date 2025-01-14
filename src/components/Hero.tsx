@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 
 export default function Hero() {
@@ -21,7 +20,10 @@ export default function Hero() {
         Ipsum as their default model text. Various versions have evolved over
         the years.
       </p>
-      <Button text="Get Started" />
+      <Button
+        formulate={() => (window.location.href = "#generator")}
+        text="Get Started"
+      />
     </div>
   );
 }
