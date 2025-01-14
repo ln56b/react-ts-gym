@@ -16,11 +16,13 @@ export type Exercise = {
 
 type WorkoutProps = {
   workout: Exercise[];
+  id: string;
 };
-export default function Workout({ workout }: WorkoutProps) {
+export default function Workout({ workout, id }: WorkoutProps) {
   return (
     !!workout.length && (
       <SectionWrapper
+        id={id}
         header="Yes you can do it!"
         title="This is your selected workout"
       >

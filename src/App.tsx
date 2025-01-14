@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Generator from "./components/Generator";
 import Hero from "./components/Hero";
-import Exercise from "./components/Workout";
 import { generateWorkout } from "./utils/helpers";
+import Workout from "./components/Workout";
 
 type Exercise = {
   description: string;
@@ -30,6 +30,8 @@ function App() {
     }
     const newWorkout = generateWorkout({ formula, muscles, goal });
     setWorkout(newWorkout);
+
+    window.location.href = "#workout";
   }
 
   return (
@@ -44,7 +46,7 @@ function App() {
         setGoal={setGoal}
         updateWorkout={updateWorkout}
       />
-      {workout && <Exercise workout={workout} />}
+      {workout && <Workout workout={workout} id="workout" />}
     </main>
   );
 }
