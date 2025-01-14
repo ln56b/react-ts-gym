@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import Generator from "./components/Generator";
 import Hero from "./components/Hero";
-import Workout from "./components/Workout";
+import Exercise from "./components/Workout";
 import { generateWorkout } from "./utils/helpers";
 
-type Workout = {
+type Exercise = {
   description: string;
   meta: { environment: string; equipment: string[]; level: number[] };
   muscles: string[];
@@ -19,15 +19,12 @@ type Workout = {
 };
 
 function App() {
-  const [workout, setWorkout] = useState<Workout>(null);
+  const [workout, setWorkout] = useState<Exercise[]>([]);
   const [formula, setFormula] = useState<string>("bro_split");
   const [muscles, setMuscles] = useState<string[]>([]);
   const [goal, setGoal] = useState("strength_power");
 
   function updateWorkout() {
-    console.log("formula", formula);
-    console.log("muscles", muscles);
-    console.log("goal", goal);
     if (!formula || !muscles.length || !goal) {
       return;
     }
@@ -48,7 +45,7 @@ function App() {
         setGoal={setGoal}
         updateWorkout={updateWorkout}
       />
-      {workout && <Workout workout={workout} />}
+      {workout && <Exercise workout={workout} />}
     </main>
   );
 }

@@ -100,7 +100,7 @@ export default function Generator(props: GeneratorProps) {
                 (workout === formula ? " border-blue-800" : "")
               }
             >
-              <p className="capitalize">{workout.replace("_", " ")}</p>
+              <p className="capitalize">{workout.replace(/[_]/g, " ")}</p>
             </button>
           );
         })}
@@ -178,7 +178,7 @@ export default function Generator(props: GeneratorProps) {
                 (scheme === scheme ? " border-blue-800" : "")
               }
             >
-              <p className="capitalize">{scheme.replace("_", " ")}</p>
+              <p className="capitalize">{scheme.replace(/[_]/g, " ")}</p>
             </button>
           );
         })}
