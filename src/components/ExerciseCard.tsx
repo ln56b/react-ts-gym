@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Exercise } from "./Workout";
+import { Exercise } from "../interfaces/models";
 
 type ExerciseCardProps = {
   exercise: Exercise;
